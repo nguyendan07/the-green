@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -56,7 +54,7 @@ ROOT_URLCONF = 'ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,18 +68,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -125,27 +111,3 @@ VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(VENV_PATH, 'media')
-
-# Configuration Debug Toolbar
-DEBUG_TOOLBAR_PANELS = [
-    'debug_toolbar.panels.versions.VersionsPanel',
-    'debug_toolbar.panels.timer.TimerPanel',
-    'debug_toolbar.panels.settings.SettingsPanel',
-    'debug_toolbar.panels.headers.HeadersPanel',
-    'debug_toolbar.panels.request.RequestPanel',
-    'debug_toolbar.panels.sql.SQLPanel',
-    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-    'debug_toolbar.panels.templates.TemplatesPanel',
-    'debug_toolbar.panels.cache.CachePanel',
-    'debug_toolbar.panels.signals.SignalsPanel',
-    'debug_toolbar.panels.logging.LoggingPanel',
-    'debug_toolbar.panels.redirects.RedirectsPanel',
-    'debug_toolbar.panels.profiling.ProfilingPanel',
-]
-
-def show_toolbar(request):
-    return True
-
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': show_toolbar
-}
