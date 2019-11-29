@@ -30,6 +30,18 @@ class Item(models.Model):
         }
         return reverse("core:product-detail", kwargs=kwargs)
     
+    def get_add_to_cart_url(self):
+        kwargs = {
+            'slug': self.slug
+        }
+        return reverse("core:add-to-cart", kwargs=kwargs)
+    
+    def get_remove_from_cart_url(self):
+        kwargs = {
+            'slug': self.slug
+        }
+        return reverse("core:remove-from-cart", kwargs=kwargs)
+    
     def save(self, *args, **kwargs):
         if self.discount:
             self.discount_price = self.price * (1 - self.discount / 100)
@@ -39,7 +51,13 @@ class Item(models.Model):
 
 
 class OrderItem(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return "{} or {}".format(self.quantity, self.item.title)
 
 
 class Order(models.Model):
