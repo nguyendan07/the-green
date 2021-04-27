@@ -147,7 +147,7 @@
 		{% for item in object_list %}
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="{{ item.get_absolute_url }}" class="img-prod"><img class="img-fluid" src="{% static 'images/product-1.jpg' %}" alt="Colorlib Template">
+					<a href="{{ item.get_absolute_url }}" class="img-prod"><img class="img-fluid" src="{% static 'images/product-1.jpg' %}" alt="">
 						{% if item.discount %} <span class="status">{{ item.discount }}%</span> {% endif %}
 						<div class="overlay"></div>
 					</a>
