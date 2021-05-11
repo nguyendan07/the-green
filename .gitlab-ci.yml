@@ -1,0 +1,49 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  IMAGE: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+
+build:
+  stage: build
+  image: docker:stable
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $IMAGE:latest || true
+    - docker build
+      --cache-from $IMAGE:latest
+      --tag $IMAGE:latest
+      --file ./Dockerfile
+      "."
+    - docker push $IMAGE:latest
+
+test:
+  stage: test
+  image: $IMAGE:latest
+  services:
+    - postgres:latest
+  variables:
+    POSTGRES_DB: test
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: ""
+    DATABASE_URL: postgres://runner@postgres:5432/test
+  script:
+    - python manage.py test
+    - flake8 the-green --max-line-length=100
+    - isort the-green --check
+
+deploy:
+  stage: deploy
+  variables:
+    HEROKU_APP_NAME: $HEROKU_APP_NAME
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api_key=$HEROKU_AUTH_TOKEN
