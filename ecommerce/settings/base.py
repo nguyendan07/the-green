@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', 'R1QLL8K_UbHZr3YqOjuuCsd58bo_rebTV_dAymQmGg8')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -145,3 +145,6 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY', '')
+STRIPE_PRIVATE_KEY = config('STRIPE_PRIVATE_KEY', '')

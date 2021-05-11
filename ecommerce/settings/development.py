@@ -33,6 +33,3 @@ def show_toolbar(request):
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': show_toolbar
 }
-
-STRIPE_PUBLIC_KEY = ''
-STRIPE_PRIVATE_KEY = ''
