@@ -9,5 +9,11 @@ django-debug-toolbar = "*"
 django-allauth = "*"
 python-decouple = "*"
 whitenoise = "*"
+dj-database-url = "*"
+psycopg2-binary = "*"
+gunicorn = "*"
+stripe = "*"
 
 [dev-packages]
+flake8 = "*"
+isort = "*"
