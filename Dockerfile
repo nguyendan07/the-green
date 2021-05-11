@@ -5,7 +5,6 @@ WORKDIR /the-green
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV DJANGO_SETTINGS_MODULE ecommerce.settings.production
 
 RUN pip install -U pip pipenv
 RUN pipenv install --system --deploy

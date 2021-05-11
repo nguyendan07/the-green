@@ -35,8 +35,8 @@ test:
     DATABASE_URL: postgres://runner@postgres:5432/test
   script:
     - python manage.py test
-    - flake8 . --max-line-length=100
-    - isort . --check
+    - flake8 --per-file-ignores='core/migrations/*:E501 tests.py:F401' --ignore=C901 --max-line-length=100 .
+    - isort --check .
 
 deploy:
   stage: deploy
