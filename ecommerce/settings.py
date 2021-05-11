@@ -148,6 +148,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY', '')
 STRIPE_PRIVATE_KEY = config('STRIPE_PRIVATE_KEY', '')
 
+LOGIN_REDIRECT_URL = '/'
+
 
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar', ]
