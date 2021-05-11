@@ -35,8 +35,8 @@ test:
     DATABASE_URL: postgres://runner@postgres:5432/test
   script:
     - python manage.py test
-    - flake8 the-green --max-line-length=100
-    - isort the-green --check
+    - flake8 . --max-line-length=100
+    - isort . --check
 
 deploy:
   stage: deploy

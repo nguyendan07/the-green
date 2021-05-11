@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.views.generic import DetailView, ListView
 
-from .models import Item, OrderItem, Order
+from .models import Item, Order, OrderItem
 
 
 class HomeView(ListView):
