@@ -12,6 +12,8 @@ class HomeView(ListView):
 
 class ItemListView(ListView):
     model = Item
+    paginate_by = 12
+    ordering = ['-id']
     template_name = 'shop.html'
 
 
