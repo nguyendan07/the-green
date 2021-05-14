@@ -8935,7 +8935,7 @@ h1, h2, h3, h4, h5,
   .table tbody tr td {
     text-align: center !important;
     vertical-align: middle;
-    padding: 40px 10px;
+    padding: 20px 10px;
     border: 1px solid transparent !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; }
     .table tbody tr td.product-remove a {
@@ -10011,3 +10011,25 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.cart-products__discount-prices {
+  font-size: 12px;
+  color: rgb(162, 162, 162);
+}
+
+.cart-products__percent-prices {
+  color: rgb(36, 36, 36);
+  font-weight: 500;
+  margin-left: 12px;
+  position: relative;
+}
+
+.cart-products__percent-prices::before {
+  content: "";
+  width: 1.6px;
+  height: 13px;
+  background: rgb(120, 120, 120);
+  position: absolute;
+  left: -8px;
+  top: 2px;
+}
