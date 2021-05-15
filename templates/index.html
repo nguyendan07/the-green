@@ -4,7 +4,7 @@
 {% block content %}
 <section id="home-section" class="hero">
 	<div class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url({% static 'images/bg_1.jpg' %});">
+		<div class="slider-item" style="background-image: url({% static 'images/bg_1.webp' %});">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 
-		<div class="slider-item" style="background-image: url({% static 'images/bg_2.jpg' %});">
+		<div class="slider-item" style="background-image: url({% static 'images/bg_2.webp' %});">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -93,7 +93,7 @@
 			<div class="col-md-8">
 				<div class="row">
 					<div class="col-md-6 order-md-last align-items-stretch d-flex">
-						<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url({% static 'images/category.jpg' %});">
+						<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url({% static 'images/category.webp' %});">
 							<div class="text text-center">
 								<h2>Vegetables</h2>
 								<p>Protect the health of every home</p>
@@ -102,12 +102,12 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({% static 'images/category-1.jpg' %});">
+						<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({% static 'images/category-1.webp' %});">
 							<div class="text px-3 py-1">
 								<h2 class="mb-0"><a href="#">Fruits</a></h2>
 							</div>
 						</div>
-						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url({% static 'images/category-2.jpg' %});">
+						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url({% static 'images/category-2.webp' %});">
 							<div class="text px-3 py-1">
 								<h2 class="mb-0"><a href="#">Vegetables</a></h2>
 							</div>
@@ -117,12 +117,12 @@
 			</div>
 
 			<div class="col-md-4">
-				<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({% static 'images/category-3.jpg' %});">
+				<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({% static 'images/category-3.webp' %});">
 					<div class="text px-3 py-1">
 						<h2 class="mb-0"><a href="#">Juices</a></h2>
 					</div>		
 				</div>
-				<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url({% static 'images/category-4.jpg' %});">
+				<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url({% static 'images/category-4.webp' %});">
 					<div class="text px-3 py-1">
 						<h2 class="mb-0"><a href="#">Dried</a></h2>
 					</div>
@@ -147,7 +147,7 @@
 		{% for item in object_list %}
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="{{ item.get_absolute_url }}" class="img-prod"><img class="img-fluid" src="{% static 'images/product-1.jpg' %}" alt="">
+					<a href="{{ item.get_absolute_url }}" class="img-prod"><img class="img-fluid" src="{% static 'images/product-1.webp' %}" alt="">
 						{% if item.discount %} <span class="status">{{ item.discount }}%</span> {% endif %}
 						<div class="overlay"></div>
 					</a>
@@ -186,7 +186,7 @@
 	</div>
 </section>
 	
-<section class="ftco-section img" style="background-image: url({% static 'images/bg_3.jpg' %});">
+<section class="ftco-section img" style="background-image: url({% static 'images/bg_3.webp' %});">
 	<div class="container">
 		<div class="row justify-content-end">
 			<div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
@@ -220,7 +220,7 @@
 				<div class="carousel-testimony owl-carousel">
 					<div class="item">
 						<div class="testimony-wrap p-4 pb-5">
-							<div class="user-img mb-5" style="background-image: url({% static 'images/person_1.jpg' %})">
+							<div class="user-img mb-5" style="background-image: url({% static 'images/person_1.webp' %})">
 								<span class="quote d-flex align-items-center justify-content-center">
 								<i class="icon-quote-left"></i>
 								</span>
@@ -234,7 +234,7 @@
 					</div>
 					<div class="item">
 						<div class="testimony-wrap p-4 pb-5">
-							<div class="user-img mb-5" style="background-image: url({% static 'images/person_2.jpg' %})">
+							<div class="user-img mb-5" style="background-image: url({% static 'images/person_2.webp' %})">
 								<span class="quote d-flex align-items-center justify-content-center">
 								<i class="icon-quote-left"></i>
 								</span>
@@ -248,7 +248,7 @@
 					</div>
 					<div class="item">
 						<div class="testimony-wrap p-4 pb-5">
-							<div class="user-img mb-5" style="background-image: url({% static 'images/person_3.jpg' %})">
+							<div class="user-img mb-5" style="background-image: url({% static 'images/person_3.webp' %})">
 								<span class="quote d-flex align-items-center justify-content-center">
 								<i class="icon-quote-left"></i>
 								</span>
@@ -262,7 +262,7 @@
 					</div>
 					<div class="item">
 						<div class="testimony-wrap p-4 pb-5">
-							<div class="user-img mb-5" style="background-image: url({% static 'images/person_1.jpg' %})">
+							<div class="user-img mb-5" style="background-image: url({% static 'images/person_1.webp' %})">
 								<span class="quote d-flex align-items-center justify-content-center">
 								<i class="icon-quote-left"></i>
 								</span>
@@ -276,7 +276,7 @@
 					</div>
 					<div class="item">
 						<div class="testimony-wrap p-4 pb-5">
-							<div class="user-img mb-5" style="background-image: url({% static 'images/person_1.jpg' %})">
+							<div class="user-img mb-5" style="background-image: url({% static 'images/person_1.webp' %})">
 								<span class="quote d-flex align-items-center justify-content-center">
 								<i class="icon-quote-left"></i>
 								</span>
