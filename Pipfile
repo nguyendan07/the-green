@@ -15,5 +15,6 @@ gunicorn = "*"
 stripe = "*"
 flake8 = "*"
 isort = "*"
+django-csp = "*"
 
 [dev-packages]

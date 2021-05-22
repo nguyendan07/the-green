@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', 'django-insecure-q7))wdt5cl!71)a^#ux8c^d$=#h9qe8si+')
+SECRET_KEY = config('SECRET_KEY', 'security-critical-9m)t*s5*6h4%+j-r57+5(kd9@#x3jy-+w+!x1c0&o0+1')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -150,6 +151,32 @@ STRIPE_PRIVATE_KEY = config('STRIPE_PRIVATE_KEY', '')
 
 LOGIN_REDIRECT_URL = '/'
 
+if not DEBUG:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_REFERRER_POLICY = 'strict-origin'
+    SECURE_BROWSER_XSS_FILTER = True
+
+
+CSP_DEFAULT_SRC = ("'none'", )
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "fonts.googleapis.com", )
+CSP_SCRIPT_SRC = ("'self'", )
+CSP_FONT_SRC = ("'self'", "fonts.gstatic.com")
+CSP_IMG_SRC = ("'self'", )
+CSP_CONNECT_SRC = ("'self'", )
+CSP_OBJECT_SRC = ("'none'", )
+CSP_BASE_URI = ("'none'", )
+CSP_FRAME_ANCESTORS = ("'none'", )
+CSP_FORM_ACTION = ("'self'", )
+CSP_INCLUDE_NONCE_IN = ('script-src', )
+CSP_MANIFEST_SRC = ("'self'", )
+CSP_WORKER_SRC = ("'self'", )
+CSP_MEDIA_SRC = ("'self'", )
 
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar', ]
