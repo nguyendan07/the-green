@@ -22,7 +22,7 @@
         <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
         <li class="nav-item"><a href="{% url 'core:contact' %}" class="nav-link">Contact</a></li>
         {% if request.user.is_authenticated %}
-            <li class="nav-item cta cta-colored"><a href="{% url 'core:checkout-cart' %}" class="nav-link"><span class="icon-shopping_cart"></span>[{{ request.user|cart_item_count }}]</a></li>
+            <li class="nav-item cta cta-colored"><a href="{% url 'core:checkout-cart' %}" class="nav-link" id="cart-item-count"><span class="icon-shopping_cart"></span>[{{ request.user|cart_item_count }}]</a></li>
             <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Logout</a></li>
         {% else %}
             <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>

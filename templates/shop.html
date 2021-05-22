@@ -56,15 +56,15 @@
 						</div>
 						<div class="bottom-area d-flex px-3">
 							<div class="m-auto d-flex">
-								<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+								<button class="add-to-cart d-flex justify-content-center align-items-center text-center">
 									<span><i class="ion-ios-menu"></i></span>
-								</a>
-								<a href="{{ item.get_add_to_cart_url }}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+								</button>
+								<button class="buy-now d-flex justify-content-center align-items-center mx-1" onclick="quantityMinusPlus(this)" id="" data-type="plus", slug="{{ item.slug }}" csrf-token={{csrf_token}} data_field="">
 									<span><i class="ion-ios-cart"></i></span>
-								</a>
-								<a href="#" class="heart d-flex justify-content-center align-items-center ">
+								</button>
+								<button class="heart d-flex justify-content-center align-items-center ">
 									<span><i class="ion-ios-heart"></i></span>
-								</a>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -103,3 +103,6 @@
   </div>
 </section>
 {% endblock content %}
+{% block javascript %}
+<script src="{% static 'js/quantity-minus-plus.js' %}"></script>
+{% endblock %}

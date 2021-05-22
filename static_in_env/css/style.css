@@ -2057,8 +2057,8 @@ textarea.form-control {
     text-decoration: none; }
   .btn:focus, .btn.focus {
     outline: 0;
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.2);
+    box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.2); }
   .btn.disabled, .btn:disabled {
     opacity: 0.65; }
   .btn:not(:disabled):not(.disabled) {
@@ -8780,6 +8780,20 @@ h1, h2, h3, h4, h5,
         -moz-border-radius: 50%;
         -ms-border-radius: 50%;
         border-radius: 50%; }
+      .product .text .bottom-area button {
+        color: #fff;
+        width: 100%;
+        background: #82ae46;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        border-radius: 50%;
+        border-color: #82ae46;
+        border-width: 0; }
+        .product .text .bottom-area button:focus {outline: 0 !important;}
       .product .text .bottom-area .m-auto {
         margin: 0 auto; }
   .product:hover {
@@ -8871,13 +8885,19 @@ h1, h2, h3, h4, h5,
 .ftco-cart button i {
   color: #82ae46; }
 
-.ftco-cart .quantity-left-minus {
-  background: transparent;
-  padding: 16px 20px; }
-
-.ftco-cart .quantity-right-plus {
-  background: transparent;
-  padding: 16px 20px; }
+.ftco-cart .quantity-left-minus, .ftco-cart .quantity-right-plus {
+  height: 54px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,.05)!important;
+  color: #82ae46;
+  padding: 10px 20px;
+  background: transparent!important;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  font-size: 14px;
+}
 
 .ftco-cart button, .ftco-cart .form-control {
   height: 54px !important;

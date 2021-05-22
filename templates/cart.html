@@ -33,9 +33,9 @@
 						<tbody>
 						{% if order_list %}
 							{% for order in order_list.items.all %}
-							<tr class="text-center">
+							<tr class="text-center" id="order-item{{ forloop.counter0 }}">
 								<td class="product-remove">
-									<a href="#"><span class="ion-ios-close"></span></a>
+									<a href="{% url 'core:remove-from-cart' order.item.slug %}"><span class="ion-md-close"></span></a>
 								</td>
 
 								<td class="image-prod">
@@ -61,14 +61,24 @@
 
 								<td class="quantity">
 									<div class="input-group mb-3">
-										<input type="text" name="quantity" class="quantity form-control input-number" value="{{ order.quantity }}" min="1" max="100" />
+										<span class="input-group-btn">
+											<button type="button" class="quantity-left-minus btn" data-type="minus" onclick="quantityMinusPlus(this)" slug="{{ order.item.slug }}" csrf-token="{{ csrf_token }}" data-field="{{ forloop.counter0 }}">
+												<i class="ion-ios-remove"></i>
+											</button>
+										</span>
+										<input type="text" name="quantity" id="quantity{{ forloop.counter0 }}" class="quantity form-control input-number" value="{{ order.quantity }}" min="1" max="100" />
+										<span class="input-group-btn">
+											<button type="button" class="quantity-right-plus btn" data-type="plus" onclick="quantityMinusPlus(this)" slug="{{ order.item.slug }}" csrf-token="{{ csrf_token }}" data-field="{{ forloop.counter0 }}">
+												<i class="ion-ios-add"></i>
+											</button>
+										</span>
 									</div>
 								</td>
-								<td class="total" style="font-weight: 500; font-size: 17px;">$
+								<td class="total" id="total-item-price{{ forloop.counter0 }}" style="font-weight: 500; font-size: 17px;">
 								{% if order.item.discount %}
-									{{ order.get_total_discount_item_price }}
+									${{ order.get_total_discount_item_price|floatformat:2 }}
 								{% else %}
-									{{ order.get_total_item_price }}
+									${{ order.get_total_item_price|floatformat:2 }}
 								{% endif %}
 								</td>
 							</tr>
@@ -124,7 +134,7 @@
 					<h3>Cart Totals</h3>
 					<p class="d-flex">
 						<span>Subtotal</span>
-						<span>${{ order_list.get_sub_total }}</span>
+						<span id="sub-total">${{ order_list.get_sub_total|floatformat:2 }}</span>
 					</p>
 					<p class="d-flex">
 						<span>Delivery</span>
@@ -132,12 +142,12 @@
 					</p>
 					<p class="d-flex">
 						<span>Discount</span>
-						<span>${{ order_list.get_total_amount_saved }}</span>
+						<span id="total-amount-saved">${{ order_list.get_total_amount_saved|floatformat:2 }}</span>
 					</p>
 					<hr>
 					<p class="d-flex total-price">
 						<span>Total</span>
-						<span>${{ order_list.get_total }}</span>
+						<span id="total">${{ order_list.get_total|floatformat:2 }}</span>
 					</p>
 				</div>
 				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
@@ -148,38 +158,5 @@
 {% endblock %}
 
 {% block javascript %}
-<script>
-	$(document).ready(function () {
-
-		var quantitiy = 0;
-		$('.quantity-right-plus').click(function (e) {
-
-			// Stop acting like a button
-			e.preventDefault();
-			// Get the field name
-			var quantity = parseInt($('#quantity').val());
-
-			// If is not undefined
-
-			$('#quantity').val(quantity + 1);
-
-			// Increment
-
-		});
-
-		$('.quantity-left-minus').click(function (e) {
-			// Stop acting like a button
-			e.preventDefault();
-			// Get the field name
-			var quantity = parseInt($('#quantity').val());
-
-			// If is not undefined
-
-			// Increment
-			if (quantity > 0) {
-				$('#quantity').val(quantity - 1);
-			}
-		});
-	});
-</script>
+<script src="{% static 'js/quantity-minus-plus.js' %}"></script>
 {% endblock %}
