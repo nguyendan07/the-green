@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-django = "*"
+django = "<4"
 django-debug-toolbar = "*"
 django-allauth = "*"
 python-decouple = "*"
